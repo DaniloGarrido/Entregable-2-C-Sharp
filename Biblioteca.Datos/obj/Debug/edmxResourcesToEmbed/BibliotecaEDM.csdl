@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Biblioteca_VirtualModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Administrador">
+    <Key>
+      <PropertyRef Name="CodAdmin" />
+    </Key>
+    <Property Name="CodAdmin" Type="Int32" Nullable="false" />
+    <Property Name="NomAdmin" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApeAdmin" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Biblioteca" Relationship="Self.FK_Administrador_Biblioteca" FromRole="Administrador" ToRole="Biblioteca" />
+  </EntityType>
+  <EntityType Name="Biblioteca">
+    <Key>
+      <PropertyRef Name="CodBli" />
+    </Key>
+    <Property Name="CodBli" Type="Int32" Nullable="false" />
+    <Property Name="NomBli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CodLibFK" Type="Int32" />
+    <Property Name="CodCliFK" Type="Int32" />
+    <Property Name="CodBibFK" Type="Int32" />
+    <Property Name="CodAdminFk" Type="Int32" />
+    <NavigationProperty Name="Administrador" Relationship="Self.FK_Administrador_Biblioteca" FromRole="Biblioteca" ToRole="Administrador" />
+    <NavigationProperty Name="Bibliotecario" Relationship="Self.FK_Bibliotecario_Biblioteca" FromRole="Biblioteca" ToRole="Bibliotecario" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Biblioteca" FromRole="Biblioteca" ToRole="Cliente" />
+    <NavigationProperty Name="Libro" Relationship="Self.FK_Libro_Biblioteca" FromRole="Biblioteca" ToRole="Libro" />
+  </EntityType>
+  <EntityType Name="Bibliotecario">
+    <Key>
+      <PropertyRef Name="CodBib" />
+    </Key>
+    <Property Name="CodBib" Type="Int32" Nullable="false" />
+    <Property Name="NomBib" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApeBib" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Biblioteca" Relationship="Self.FK_Bibliotecario_Biblioteca" FromRole="Bibliotecario" ToRole="Biblioteca" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="CodCli" />
+    </Key>
+    <Property Name="CodCli" Type="Int32" Nullable="false" />
+    <Property Name="NomCli" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApeCli" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Biblioteca" Relationship="Self.FK_Cliente_Biblioteca" FromRole="Cliente" ToRole="Biblioteca" />
+  </EntityType>
+  <EntityType Name="Libro">
+    <Key>
+      <PropertyRef Name="CodLib" />
+    </Key>
+    <Property Name="CodLib" Type="Int32" Nullable="false" />
+    <Property Name="NombreLib" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CodISBN" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Autor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Editorial" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fechapublic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Genero" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Biblioteca" Relationship="Self.FK_Libro_Biblioteca" FromRole="Libro" ToRole="Biblioteca" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Sesion">
+    <Key>
+      <PropertyRef Name="CodigoEmple" />
+      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="contrasena" />
+      <PropertyRef Name="Tipousuario" />
+    </Key>
+    <Property Name="CodigoEmple" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="contrasena" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tipousuario" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Administrador_Biblioteca">
+    <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+    <End Role="Biblioteca" Type="Self.Biblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Administrador">
+        <PropertyRef Name="CodAdmin" />
+      </Principal>
+      <Dependent Role="Biblioteca">
+        <PropertyRef Name="CodAdminFk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bibliotecario_Biblioteca">
+    <End Role="Bibliotecario" Type="Self.Bibliotecario" Multiplicity="0..1" />
+    <End Role="Biblioteca" Type="Self.Biblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bibliotecario">
+        <PropertyRef Name="CodBib" />
+      </Principal>
+      <Dependent Role="Biblioteca">
+        <PropertyRef Name="CodBibFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cliente_Biblioteca">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Biblioteca" Type="Self.Biblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="CodCli" />
+      </Principal>
+      <Dependent Role="Biblioteca">
+        <PropertyRef Name="CodCliFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Libro_Biblioteca">
+    <End Role="Libro" Type="Self.Libro" Multiplicity="0..1" />
+    <End Role="Biblioteca" Type="Self.Biblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Libro">
+        <PropertyRef Name="CodLib" />
+      </Principal>
+      <Dependent Role="Biblioteca">
+        <PropertyRef Name="CodLibFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Biblioteca_VirtualEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Administrador" EntityType="Self.Administrador" />
+    <EntitySet Name="Biblioteca" EntityType="Self.Biblioteca" />
+    <EntitySet Name="Bibliotecario" EntityType="Self.Bibliotecario" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Libro" EntityType="Self.Libro" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Sesion" EntityType="Self.Sesion" />
+    <AssociationSet Name="FK_Administrador_Biblioteca" Association="Self.FK_Administrador_Biblioteca">
+      <End Role="Administrador" EntitySet="Administrador" />
+      <End Role="Biblioteca" EntitySet="Biblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bibliotecario_Biblioteca" Association="Self.FK_Bibliotecario_Biblioteca">
+      <End Role="Bibliotecario" EntitySet="Bibliotecario" />
+      <End Role="Biblioteca" EntitySet="Biblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cliente_Biblioteca" Association="Self.FK_Cliente_Biblioteca">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Biblioteca" EntitySet="Biblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Libro_Biblioteca" Association="Self.FK_Libro_Biblioteca">
+      <End Role="Libro" EntitySet="Libro" />
+      <End Role="Biblioteca" EntitySet="Biblioteca" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

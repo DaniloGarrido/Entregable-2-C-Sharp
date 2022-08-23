@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Biblioteca_VirtualModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administrador">
+    <Key>
+      <PropertyRef Name="CodAdmin" />
+    </Key>
+    <Property Name="CodAdmin" Type="int" Nullable="false" />
+    <Property Name="NomAdmin" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="ApeAdmin" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Biblioteca">
+    <Key>
+      <PropertyRef Name="CodBli" />
+    </Key>
+    <Property Name="CodBli" Type="int" Nullable="false" />
+    <Property Name="NomBli" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CodLibFK" Type="int" />
+    <Property Name="CodCliFK" Type="int" />
+    <Property Name="CodBibFK" Type="int" />
+    <Property Name="CodAdminFk" Type="int" />
+  </EntityType>
+  <EntityType Name="Bibliotecario">
+    <Key>
+      <PropertyRef Name="CodBib" />
+    </Key>
+    <Property Name="CodBib" Type="int" Nullable="false" />
+    <Property Name="NomBib" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="ApeBib" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="CodCli" />
+    </Key>
+    <Property Name="CodCli" Type="int" Nullable="false" />
+    <Property Name="NomCli" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="ApeCli" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Libro">
+    <Key>
+      <PropertyRef Name="CodLib" />
+    </Key>
+    <Property Name="CodLib" Type="int" Nullable="false" />
+    <Property Name="NombreLib" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CodISBN" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Autor" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Editorial" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Fechapublic" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Categoria" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Genero" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Biblioteca_Virtual.dbo.Sesion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Sesion">
+    <Key>
+      <PropertyRef Name="CodigoEmple" />
+      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="contrasena" />
+      <PropertyRef Name="Tipousuario" />
+    </Key>
+    <Property Name="CodigoEmple" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="contrasena" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Tipousuario" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Administrador_Biblioteca">
+    <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+    <End Role="Biblioteca" Type="Self.Biblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Administrador">
+        <PropertyRef Name="CodAdmin" />
+      </Principal>
+      <Dependent Role="Biblioteca">
+        <PropertyRef Name="CodAdminFk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bibliotecario_Biblioteca">
+    <End Role="Bibliotecario" Type="Self.Bibliotecario" Multiplicity="0..1" />
+    <End Role="Biblioteca" Type="Self.Biblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bibliotecario">
+        <PropertyRef Name="CodBib" />
+      </Principal>
+      <Dependent Role="Biblioteca">
+        <PropertyRef Name="CodBibFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cliente_Biblioteca">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Biblioteca" Type="Self.Biblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="CodCli" />
+      </Principal>
+      <Dependent Role="Biblioteca">
+        <PropertyRef Name="CodCliFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Libro_Biblioteca">
+    <End Role="Libro" Type="Self.Libro" Multiplicity="0..1" />
+    <End Role="Biblioteca" Type="Self.Biblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Libro">
+        <PropertyRef Name="CodLib" />
+      </Principal>
+      <Dependent Role="Biblioteca">
+        <PropertyRef Name="CodLibFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Biblioteca_VirtualModelStoreContainer">
+    <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Biblioteca" EntityType="Self.Biblioteca" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bibliotecario" EntityType="Self.Bibliotecario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Libro" EntityType="Self.Libro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sesion" EntityType="Self.Sesion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Sesion].[CodigoEmple] AS [CodigoEmple], 
+    [Sesion].[Usuario] AS [Usuario], 
+    [Sesion].[contrasena] AS [contrasena], 
+    [Sesion].[Tipousuario] AS [Tipousuario]
+    FROM [dbo].[Sesion] AS [Sesion]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Administrador_Biblioteca" Association="Self.FK_Administrador_Biblioteca">
+      <End Role="Administrador" EntitySet="Administrador" />
+      <End Role="Biblioteca" EntitySet="Biblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bibliotecario_Biblioteca" Association="Self.FK_Bibliotecario_Biblioteca">
+      <End Role="Bibliotecario" EntitySet="Bibliotecario" />
+      <End Role="Biblioteca" EntitySet="Biblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cliente_Biblioteca" Association="Self.FK_Cliente_Biblioteca">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Biblioteca" EntitySet="Biblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Libro_Biblioteca" Association="Self.FK_Libro_Biblioteca">
+      <End Role="Libro" EntitySet="Libro" />
+      <End Role="Biblioteca" EntitySet="Biblioteca" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

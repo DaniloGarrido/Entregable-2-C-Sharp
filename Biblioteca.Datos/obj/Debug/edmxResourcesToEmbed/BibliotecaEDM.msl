@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Biblioteca_VirtualModelStoreContainer" CdmEntityContainer="Biblioteca_VirtualEntities3">
+    <EntitySetMapping Name="Administrador">
+      <EntityTypeMapping TypeName="Biblioteca_VirtualModel.Administrador">
+        <MappingFragment StoreEntitySet="Administrador">
+          <ScalarProperty Name="CodAdmin" ColumnName="CodAdmin" />
+          <ScalarProperty Name="NomAdmin" ColumnName="NomAdmin" />
+          <ScalarProperty Name="ApeAdmin" ColumnName="ApeAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Biblioteca">
+      <EntityTypeMapping TypeName="Biblioteca_VirtualModel.Biblioteca">
+        <MappingFragment StoreEntitySet="Biblioteca">
+          <ScalarProperty Name="CodBli" ColumnName="CodBli" />
+          <ScalarProperty Name="NomBli" ColumnName="NomBli" />
+          <ScalarProperty Name="CodLibFK" ColumnName="CodLibFK" />
+          <ScalarProperty Name="CodCliFK" ColumnName="CodCliFK" />
+          <ScalarProperty Name="CodBibFK" ColumnName="CodBibFK" />
+          <ScalarProperty Name="CodAdminFk" ColumnName="CodAdminFk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bibliotecario">
+      <EntityTypeMapping TypeName="Biblioteca_VirtualModel.Bibliotecario">
+        <MappingFragment StoreEntitySet="Bibliotecario">
+          <ScalarProperty Name="CodBib" ColumnName="CodBib" />
+          <ScalarProperty Name="NomBib" ColumnName="NomBib" />
+          <ScalarProperty Name="ApeBib" ColumnName="ApeBib" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="Biblioteca_VirtualModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="CodCli" ColumnName="CodCli" />
+          <ScalarProperty Name="NomCli" ColumnName="NomCli" />
+          <ScalarProperty Name="ApeCli" ColumnName="ApeCli" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Libro">
+      <EntityTypeMapping TypeName="Biblioteca_VirtualModel.Libro">
+        <MappingFragment StoreEntitySet="Libro">
+          <ScalarProperty Name="CodLib" ColumnName="CodLib" />
+          <ScalarProperty Name="NombreLib" ColumnName="NombreLib" />
+          <ScalarProperty Name="CodISBN" ColumnName="CodISBN" />
+          <ScalarProperty Name="Autor" ColumnName="Autor" />
+          <ScalarProperty Name="Editorial" ColumnName="Editorial" />
+          <ScalarProperty Name="Fechapublic" ColumnName="Fechapublic" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Biblioteca_VirtualModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sesion">
+      <EntityTypeMapping TypeName="Biblioteca_VirtualModel.Sesion">
+        <MappingFragment StoreEntitySet="Sesion">
+          <ScalarProperty Name="CodigoEmple" ColumnName="CodigoEmple" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="Tipousuario" ColumnName="Tipousuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,35 @@
+﻿<Controls1:MetroWindow
+        xmlns:Controls1="http://metro.mahapps.com/winfx/xaml/controls"   
+        x:Class="BibliotecaView.LogIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BibliotecaView"
+        mc:Ignorable="d"
+        Title="LogIn" Height="450" Width="800">
+
+    <StackPanel Background="#FF96EDFB">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
+        <StackPanel Grid.Row="0" Height="80">
+            <Label HorizontalAlignment="Center" Content="Inicio de sesion" FontSize="36" FontFamily="Quicksand" Margin="0,10,0,0" FontWeight="Bold"></Label>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Height="340">
+            <Label  x:Name="labelusuario" Content="Usuario" HorizontalAlignment="Center" FontFamily="Quicksand" FontSize="22" Margin="0,15,0,0"/>
+            <TextBox  Controls1:TextBoxHelper.ClearTextButton="True" x:Name="txtusuario" HorizontalAlignment="Center" Width="400" FontSize="18" Margin="0,15,0,0" Text="Ingrese su nombre de usuario" TextAlignment="Center" />
+            <Label  x:Name="lblcontrasena" HorizontalAlignment="Center" Content="Contrasena" FontFamily="Quicksand" FontSize="22" Margin="332,15,332,0"/>
+            <PasswordBox  x:Name="pswcontrasena" HorizontalAlignment="Center" Width="400" FontSize="18" Margin="196,15,196,0" FontFamily="Quicksand"/>
+            <Button Click="btniniciarsesion" Content="Button" HorizontalAlignment="Left" Height="55" Margin="340,15,0,0" Width="119.795" Controls1:ControlsHelper.FocusBorderThickness="2" Controls1:ControlsHelper.RecognizesAccessKey="False" Template="{DynamicResource butonnormal}" FontFamily="Quicksand"/>
+
+
+        </StackPanel>
+
+    </StackPanel>
+
+</Controls1:MetroWindow>

@@ -1,0 +1,141 @@
+﻿<Controls1:MetroWindow
+        xmlns:Controls1="http://metro.mahapps.com/winfx/xaml/controls"   
+        x:Class="BibliotecaView.IngresoLibro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BibliotecaView"
+        mc:Ignorable="d"
+        Title="IngresoLibro" Height="650" Width="590" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+
+    </Window.Resources>
+    <Window.Background >
+        <ImageBrush ImageSource="Resources/FOndo 2.jpg
+                    "/>
+    </Window.Background>
+    <Border Padding="5">
+        <Border.Background>
+            <SolidColorBrush Color="#FF5D4209" Opacity="0.29"/>
+        </Border.Background>
+
+        <StackPanel Margin="5,-9,-5,9">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="74*"></RowDefinition>
+                    <RowDefinition Height="187*"/>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+
+
+
+
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="2" Grid.Row="1"/>
+
+                <StackPanel  Orientation="Vertical"  Grid.Row="0"  >
+                    <Label Content="Gestion de libros" HorizontalAlignment="Center" Margin="0,25,0,20" VerticalAlignment="Top" FontSize="24" FontFamily="Papyrus" FontWeight="ExtraBlack" TextOptions.TextFormattingMode="Display" TextOptions.TextHintingMode="Animated" >
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF97FF00" Opacity="0.7"/>
+                        </Label.Background>
+                    </Label>
+                    <Label></Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Grid.Row="1" Grid.RowSpan="2">
+                    <Label  FontFamily="Yu Gothic" FontSize="17" Content="Codigo"  FontWeight="Bold" HorizontalAlignment="Center" Margin="0,-5,0,-9">
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF97FF00" Opacity="0.7"/>
+                        </Label.Background>
+                    </Label>
+                    <TextBox x:Name="txtcod" HorizontalAlignment="Center" Width="300" Height="25"  Padding="3,-0.6,0,3"   FontWeight="Bold" FontFamily="Yu Gothic" FontSize="16" TextOptions.TextHintingMode="Animated" Background="#FFCDF78F" />
+                    <Label></Label>
+                    <Label FontFamily="Yu Gothic" FontSize="17" Content="Nombre" HorizontalAlignment="center" VerticalAlignment="Top"  FontWeight="Bold" Margin="0,-5,0,-9">
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF97FF00" Opacity="0.7"/>
+                        </Label.Background>
+                    </Label>
+                    <TextBox Padding="3,-0.6,0,3" FontFamily="Yu Gothic" x:Name="txtnom" HorizontalAlignment="Center" Width="300" Height="25"    Background="#FFCDF78F" FontWeight="Bold" FontSize="16"/>
+                    <Label></Label>
+                    <Label FontFamily="Yu Gothic" FontSize="17" Content="Codigo ISBN" HorizontalAlignment="center" VerticalAlignment="Top"  FontWeight="Bold" Margin="0,-5,0,-9">
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF97FF00" Opacity="0.7"/>
+                        </Label.Background>
+                    </Label>
+                    <TextBox Padding="3,-0.6,0,3" FontFamily="Yu Gothic" x:Name="txtcodisbn" HorizontalAlignment="Center" Width="300" Height="25"   Background="#FFCDF78F" FontWeight="Bold" FontSize="16"/>
+                    <Label></Label>
+                    <Label FontFamily="Yu Gothic" FontSize="17" Content="Autor" HorizontalAlignment="center" VerticalAlignment="Top"  FontWeight="Bold" Margin="0,-5,0,-9">
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF97FF00" Opacity="0.7"/>
+                        </Label.Background>
+                    </Label>
+                    <TextBox Padding="3,-0.6,0,3" FontFamily="Yu Gothic" x:Name="txtautor" HorizontalAlignment="Center" Width="300" Height="25"  Background="#FFCDF78F" FontWeight="Bold" FontSize="16"/>
+                    <Label></Label>
+                    <Label FontFamily="Yu Gothic" FontSize="17" Content="Editorial" HorizontalAlignment="center" VerticalAlignment="Top"  FontWeight="Bold" Margin="0,-5,0,-9">
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF97FF00" Opacity="0.675"/>
+                        </Label.Background>
+                    </Label>
+                    <TextBox FontFamily="Yu Gothic" x:Name="txteditorial" HorizontalAlignment="Center" Width="300" Height="25"  Padding="3,-0.6,0,3"  Background="#FFCDF78F" FontWeight="Bold" FontSize="16"/>
+                    <Label></Label>
+                    <Label FontFamily="Yu Gothic" FontSize="17" Content="Fecha de Publicacion" HorizontalAlignment="center" VerticalAlignment="Top"  FontWeight="Bold" Margin="0,-5,0,-9">
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF97FF00" Opacity="0.675"/>
+                        </Label.Background>
+                    </Label>
+                    <TextBox FontFamily="Yu Gothic" x:Name="txtfechapublic" HorizontalAlignment="Center" Width="300" Height="25"  Padding="3,-0.6,0,3" Background="#FFCDF78F" FontWeight="Bold" FontSize="16"/>
+                    <Label></Label>
+                    <Label FontFamily="Yu Gothic" FontSize="17" x:Name="labelcategoria" Content="Categoria" HorizontalAlignment="center" VerticalAlignment="Top"  FontWeight="Bold" Margin="0,-9">
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF97FF00" Opacity="0.7"/>
+                        </Label.Background>
+                    </Label>
+                    <ComboBox FontFamily="Yu Gothic" x:Name="cboxcate" HorizontalAlignment="Center" Width="300" Height="25" VerticalAlignment="Top" BorderBrush="Black"  FontWeight="Bold" FontSize="16" Cursor="Hand" >
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                <GradientStop Color="#FFCDF78F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+                    <Label></Label>
+                    <Label FontFamily="Yu Gothic" FontSize="17" x:Name="labelgenero" Content="Genero" HorizontalAlignment="center" VerticalAlignment="Top" FontWeight="Bold" Margin="0,-5,0,-9">
+                        <Label.Background>
+                            <SolidColorBrush Color="#FF97FF00" Opacity="0.68"/>
+                        </Label.Background>
+                    </Label>
+                    <ComboBox FontFamily="Yu Gothic" x:Name="cboxgenero" HorizontalAlignment="Center" Width="300" Height="25" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" >
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                <GradientStop Color="#FFCDF78F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                    </ComboBox>
+
+                    <Label></Label>
+                    <Popup/>
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center" Grid.Row="3" Orientation="Horizontal" Margin="10,10,10,10" >
+                    <Button Margin="25,0,0,0" Content="Ingresar" Width="80.378" Click="Ingresar" Height="25" HorizontalContentAlignment="Center"  Cursor="Hand"/>
+                    <Button Content="Buscar"  Margin="25,0,0,0" Width="80.378" Height="25" Click="btnbus" Cursor="Hand" />
+                    <Button  Content="Modificar" Margin="25,0,0,0" Width="80.378" Click="btnmodi" Height="25" VerticalAlignment="Top"  Cursor="Hand" Template="{DynamicResource butonnormal}"/>
+                    <Button Content="Eliminar"  Margin="25,0,0,0" Width="80.378" Height="25" Click="btnelim" Cursor="Hand" />
+                    <Button Content="Limpiar" Margin="25,0,0,0" Width="80.378" Height="25" Click="btnlimpiar"  Cursor="Hand"/>
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="4" Margin="76,0,76,10" Width="225">
+                    <Border Background="Azure" CornerRadius="7"/>
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+    </Border>
+</Controls1:MetroWindow>
